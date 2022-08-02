@@ -1,0 +1,182 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Love Calculator</title>
+
+    <!-- bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <!--material icons-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gruppo&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- mystyle -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- font awesome -->
+    <script
+      src="https://kit.fontawesome.com/34b09a5387.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- unicons -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+  </head>
+
+  <body>
+    <nav>
+      <div class="menu-icon">
+        <span class="fas fa-bars"></span>
+      </div>
+      <div class="logo">
+        <a href="./index.html" style="color: #fff; text-decoration: none"
+          >Yue Lao's Calculator</a
+        >
+
+        <img src="./images/redKnotLogo.png" alt="" id="logo" />
+      </div>
+
+      <div class="nav-items">
+        <li><a href="./howitworks.html">How It Works</a></li>
+        <li><a href="./faq.html">FAQ</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+        <li>
+          <a href="./optimalstoppingtheory.html">Optimal Stopping Theory</a>
+        </li>
+      </div>
+      <div class="search-icon">
+        <!-- <span class="fas fa-search"></span> -->
+      </div>
+      <div class="cancel-icon">
+        <span class="fas fa-times"></span>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12" id="faq-title">FAQ</div>
+      </div>
+      <div class="row faq-row">
+        <h3>What is the Love Calculator based on?</h3>
+        <p>
+          This love calculator is based on the Drake Equation and
+          <a href="./optimalstoppingtheory.html">Optimal Stopping Theory.</a>
+        </p>
+      </div>
+      <div class="row faq-row">
+        <h3>How does it work?</h3>
+        <p>
+          Yue Lao's Calculator accepts two user inputs. Personal metrics such as
+          height, age, education and income-- and dating history. The Drake
+          Equation is applied to filter a starting population down to a dating
+          pool. Then Optimal Stopping Theory is applied to calculate the
+          presence of the best candidate for a relationship.
+        </p>
+      </div>
+
+      <div class="row faq-row">
+        <h3>How is my attractiveness calculated?</h3>
+        <p>
+          Attractiveness is calculated using a linear regression and areas of
+          bell curves based on this informal
+          <a href="./surveyresults.pdf">survey</a> of mostly South East Asian
+          women conducted in 2022, carried out by the developer of the
+          calculator. <br /><br />
+          For height and education, preferences of minimum and maximum male
+          height and education are mapped onto a bell curve. For example, a male
+          that is too tall or too short will have a smaller area range of this
+          bell curve, while males in the ideal range of height will have the
+          largest area range. A bell curve is used because there are less
+          extremely short and extremely tall women compared to average height
+          women, as with education attainment.
+          <br /><br />
+          For income, linear regression is used to predict the correlation
+          between increase in income and number of women specifying that income
+          as acceptable for dating.
+          <br /><br />
+          For age, a double filter is used. Based on this United Nation's
+          <a href="https://www.population-trends-asiapacific.org/data/sea"
+            >data</a
+          >, there is a rounded average of 1% of a population within each given
+          age. This 1% is multiplied by the input age's acceptable dating range.
+          Next the calculator filters how many people are married within their
+          age range, to show the final percentage.
+        </p>
+      </div>
+
+      <div class="row faq-row">
+        <h3>How is my dating pool calculated?</h3>
+        <p>
+          Based on your attractiveness, a starting population is slowly filtered
+          down to get your dating pool. For example, a 160cm tall guy will have
+          women 153cm and taller women filtered off from his dating pool as they
+          prefer males atleast 8cm taller according to the survey.
+        </p>
+      </div>
+
+      <div class="row faq-row">
+        <h3>What is the Drake Equation?</h3>
+        <p>
+          <i>From wikipedia:</i><br />
+          The Drake equation is a probabilistic argument used to estimate the
+          number of active, communicative extraterrestrial civilizations in the
+          Milky Way Galaxy. The equation was formulated in 1961 by Frank Drake.
+          <br /><br />
+          This calculator uses it to filter the number of datable people for a
+          certain individual.
+        </p>
+      </div>
+
+      <div class="row faq-row">
+        <h3>How accurate is the calculator?</h3>
+        <p>
+          It is not accurate as it is a representation of reality. Women's
+          heights and education don't fit perfectly on a bell curve. A male's
+          face and personality are not taken into account. Some women prioritize
+          wealth over height, while this calculator treats all metrics as equal.
+        </p>
+      </div>
+
+      <div class="row faq-row">
+        <h3>Why is it only for men?</h3>
+        <p>
+          A women's version is in development, but with a different algorithm.
+        </p>
+      </div>
+    </div>
+
+    <!-- javascript -->
+    <script src="main.js"></script>
+
+    <!-- bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

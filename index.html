@@ -1,0 +1,302 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:image" content="./images/yue_lao_border" />
+    <title>Love Calculator</title>
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!--material icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
+    
+
+
+    <!-- mystyle -->
+    <link rel="stylesheet" href="style.css">
+
+
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/34b09a5387.js" crossorigin="anonymous"></script>
+
+    <!-- unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+
+</head>
+
+<body>
+
+
+      <nav>
+        <div class="menu-icon">
+           <span class="fas fa-bars"></span>
+        </div>
+        <div class="logo">
+            <a href="./index.html" style="color: #fff; text-decoration: none;">Yue Lao's Calculator</a>
+           
+           <img src="./images/redKnotLogo.png" alt="" id="logo">
+        </div>
+
+        <div class="nav-items">
+        
+            <li><a href="./howitworks.html">How It Works</a></li>
+            <li><a href="./faq.html">FAQ</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="./optimalstoppingtheory.html">Optimal Stopping Theory</a></li>
+        
+        </div>
+        <div class="search-icon">
+           
+        </div>
+        <div class="cancel-icon">
+           <span class="fas fa-times"></span>
+        </div>
+        
+     </nav>
+
+
+    <div class="container yuelao-container">
+        <div class="row justify-content-center ">
+            <div class="col-6 ">
+                <img id="yuelao-image" src="./images/yue_lao_border.png" alt="">
+            </div>
+            <div class="col-6">
+                <div class="imessage">
+                    <p class="from-me typewrite" data-period="2000" data-type='["Input all your past relationships and your rating of them, and I will reveal... <br> your True Love. <br> - Yue Lao"]'>
+                        </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- input -->
+    <div class="form container-fluid">
+        <div id="inputRow">
+            <form>
+                <div class="row pastDatesField ">
+                    <div class="col-md-2 col-0">
+                    </div>
+                    <div class=" col-md-6 col-7" data-tooltip="Date, Relationship or Hookup" id="nameField" >
+                        <input  id="nameValue" type="text" class="form-control form-control-lg field" placeholder="Brenda / Jason">
+                    </div>
+                    <div class="col-md-2 col-4" data-tooltip="1 worst, 10 best" id="ratingField" >
+                        <select id="ratingValue" class="form-select form-select-lg required field" aria-label=".form-select-lg "
+                            id="ratingValue">
+                            <option value="" selected disabled>Rating</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+
+                    </div>
+
+                </div>
+                <!-- <p id="xIcon"><i class="far fa-times-circle fa-md" onclick="deleteField()"></i></p> -->
+            </form>
+        </div>
+
+    </div>
+
+    
+
+    <!-- add more -->
+    <div class="col-12 add-more" style="text-align: center;">
+        <img src="images/add.png" alt="" class="add-button" onclick="validateDatesFieldForm() ">
+    </div>
+
+    <!-- about me -->
+    <div class="aboutMe">
+        <!-- about me title -->
+        <div id="aboutMeTitle">
+            <p onclick="displayAboutMeForm()"> About Me &#x2193;</p>
+        </div>
+
+        <!-- about me form -->
+
+        <div class="container mt-1 glass col-md-8" id="aboutMeFormContainer">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-md-8">
+                    <form id="regForm">
+                        <!-- icons steps tabs bar -->
+                        <div class="all-steps" id="all-steps">
+                            <span class="step">
+                                <i class="fa fa-venus-mars"></i>
+                            </span>
+                            <span class="step">
+                                <i class="fa fa-arrows-up-down"></i>
+                            </span>
+                            <span class="step">
+                                <i class="fa fa-dollar-sign"></i>
+                            </span>
+                            <span class="step">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </span>
+                            <span class="step">
+                                <i class="fa fa-cake-candles"></i>
+                            </span>
+                            
+                            <span class="step">
+                                <i class="fa fa-champagne-glasses"></i>
+                            </span>
+                        </div>
+
+                        <!-- gender -->
+                        <div class="tab">
+                            <h6>Your Gender?</h6>
+                            <p>
+                            <div id="radios">
+                                <label for="male" class="material-icons" >
+                                    <input type="radio" name="radio" id="male" value="male" />
+                                    <span class="material-icons-outlined">male</span>
+                                </label>
+                            </div>
+                            </p>
+                        </div>
+
+                        <!-- relationship status -->
+                        <!-- <div class="tab">
+                            <h6>Relationship Status?</h6>
+                            <p>
+                            <div id="radios">
+                                <label for="single" class="material-icons" onclick="updateRadio()">
+                                    <input type="radio" name="radio" id="single" value="single" />
+                                    <span class="material-icons-outlined">man</span>
+                                </label>
+                                <label for="Taken" class="material-icons" onclick="updateRadio()">
+                                    <input type="radio" name="radio" id="relationship" value="Taken" />
+                                    <span class="material-icons-outlined">group</span>
+                                </label>
+                            </div>
+                            </p>
+                        </div> -->
+
+
+                        <!-- height -->
+                        <div class="tab">
+                            <h6>Height (cm)</h6>
+                            <p>
+                                <input type="number" id="heightValue" name="quantity" min="100" max="300">
+                            </p>
+                        </div>
+
+                        <!-- networth -->
+                        <div class="tab">
+                            <h6>Estimate your total monthly income including allowance if any</h6>
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="incomeValue">
+                                <option selected value="false">Select</option>
+                                <option value="0"> Not sure </option>
+                                <option value="0"> Less than USD$200 </option>
+                                <option value="200">Around USD$200</option>
+                                <option value="300">Around USD$300</option>
+                                <option value="400">Around USD$400</option>
+                                <option value="500">Around USD$500</option>
+                                <option value="600">Around USD$600</option>
+                                <option value="700">Around USD$700</option>
+                                <option value="800">Around USD$800</option>
+                                <option value="900">Around USD$900</option>
+                                <option value="1000">Around USD$1000</option>
+                                <option value="1100">Around USD$1100</option>
+                                <option value="1200">Around USD$1200</option>
+                                <option value="1300">More than USD$1200</option>
+
+                            </select>
+                        </div>
+
+                        <!-- Body type -->
+                        <div class="tab">
+                            <h6>Your current education level?</h6>
+                            <p>
+                                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="educationValue">
+                                    <option selected>Select</option>
+                                    <option value="1">Highschool or Below</option>
+                                    <option value="2">Foundation</option>
+                                    <option value="3">Diploma</option>
+                                    <option value="4">Degree</option>
+                                    <option value="5">Masters</option>
+                                    <option value="6">PHD</option>
+                                </select>
+                            </p>
+                        </div>
+
+                        <!-- age -->
+                        <div class="tab">
+                            <h6>Finally, what is your age?</h6>
+                            <p>
+                                <input type="number" id="ageValue" name="quantity" min="10" max="100">
+                            </p>
+                        </div>
+
+                        <div id="text-message-container" class="tab" >
+                            <img src="./images/redknot1.png" alt="" id="knot">
+                            <div id="msgYueLaoContainer"><img src="./images/yue_lao_border.png" id="msgYueLao-image" ></div>
+                            <p>Yue Lao</p><br>
+                            <p id="yourDatingPool"></p>
+                            <p id="finalResult"></p>
+                        </div>
+
+                    
+
+                        <!-- buttons -->
+                        <div style="overflow:auto;" id="nextprevious">
+                            <div>
+                                <!-- style="float:right;" -->
+                                <button type="button" id="prevBtn" onmousedown="nextPrev(-1)">
+                                    <i class="fa fa-angle-double-left"></i>
+                                </button>
+
+                                <button type="button" id="nextBtn" onmousedown="nextPrev(1)">
+                                    <i class="fa fa-angle-double-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- javascript -->
+    <script src="main.js"></script>
+
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
