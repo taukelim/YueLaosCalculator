@@ -487,6 +487,7 @@ function finalResult() {
   }
 
   function nextPrev(n) {
+    console.log('next button clicked');
     //get elements of class "tab" into array-like, assign it to x
     let allTabs = document.getElementsByClassName('tab');
 
@@ -544,10 +545,10 @@ function finalResult() {
   }
 }
 
-const nextBtnClick = document.querySelector('#nextBtn');
-const prevBtnClick = document.querySelector('#prevBtn');
-nextBtnClick.addEventListener('click', nextPrev(1));
-prevBtnClick.addEventListener('click', nextPrev(-1));
+// const nextBtnClick = document.querySelector('#nextBtn');
+// const prevBtnClick = document.querySelector('#prevBtn');
+// nextBtnClick.addEventListener('click', nextPrev(1));
+// prevBtnClick.addEventListener('click', nextPrev(-1));
 
 /*=============================================
 =            TYPEWRITER            =
