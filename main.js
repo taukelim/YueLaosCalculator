@@ -467,7 +467,7 @@ function validateForm() {
 
     for (i = 0; i < y.length; i++) {
       //if any input field of currentTab is empty apply class 'invalid' and change valid to false
-      if (y[i].value == false) {
+      if (y[i].value == 'false') {
         y[i].className += ' invalid';
         valid = false;
       }
