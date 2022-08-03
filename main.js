@@ -251,7 +251,6 @@ const datingPool = function (startingPopulation) {
   const doubleFilteredDatingPool = attractivenessFilter(
     popGeneralFilter(startingPopulation)
   );
-  console.log(doubleFilteredDatingPool, 'double filtered pool');
 
   return doubleFilteredDatingPool < 1 ? 1 : doubleFilteredDatingPool;
 };
@@ -264,10 +263,6 @@ function logic(datingPool) {
     thirtySevenPercent,
     numberOfDates()
   );
-  console.log(thirtySevenPercent, ' thirty seven');
-  console.log(numberOfDates(), ' number of dates');
-  console.log(firstPool, ' first pool');
-  console.log(secondPool, ' second pool');
 
   if (datingPool < 3) {
     return `The first person that is interested in you, is your True Love.`;
@@ -280,7 +275,6 @@ function logic(datingPool) {
       let highestRating = Math.max(...pool.map((e) => e[1])).toString();
       return pool.filter((e) => e[1] === highestRating);
     })(firstPool);
-    console.log(benchmark, ' benchmark');
 
     /*Is True Love found?*/
     /*Returns the first pair that is >= benchmark (true love), else returns string mentioning next pair better than benchmark is true love*/
@@ -301,7 +295,6 @@ function logic(datingPool) {
             benchmark[benchmark.length - 1][0]
           } is your True Love.`;
     })();
-    console.log(checkTrueLoveInSecondPool, ' check true');
 
     return checkTrueLoveInSecondPool;
   }
@@ -318,10 +311,10 @@ function logic(datingPool) {
 function finalResult() {
   //Get custom dating pool
   let customDatingPool = datingPool(startingPop);
-  console.log('your dating pool is ', customDatingPool);
+
   //Plug into logic where it combines with dating history
   let result = logic(customDatingPool);
-  console.log(result);
+
   //display result to html
   document.getElementById(
     'yourDatingPool'
@@ -462,18 +455,32 @@ function showTab(currentTab) {
   fixStepIndicator(currentTab);
 }
 
-///TO-DO validation
 function validateForm() {
-  var x = document.getElementsByClassName('tab');
-  var y = x[currentTab].getElementsByTagName('input');
-  var i;
-  var valid = true;
+  let x = document.getElementsByClassName('tab');
+  let y = x[currentTab].getElementsByTagName('input');
+  let i;
+  let valid = true;
 
-  for (i = 0; i < y.length; i++) {
-    //if any input field of currentTab is empty apply class 'invalid' and change valid to false
-    if (y[i].value == '') {
-      y[i].className += ' invalid';
-      valid = false;
+  //If there's no input tag...
+  if ([...y].length == 0) {
+    y = x[currentTab].getElementsByTagName('select');
+
+    for (i = 0; i < y.length; i++) {
+      //if any input field of currentTab is empty apply class 'invalid' and change valid to false
+      if (y[i].value == false) {
+        y[i].className += ' invalid';
+        valid = false;
+      }
+    }
+  }
+  //Else (it should be input tag)
+  else {
+    for (i = 0; i < y.length; i++) {
+      //if any input field of currentTab is empty apply class 'invalid' and change valid to false
+      if (y[i].value == '') {
+        y[i].className += ' invalid';
+        valid = false;
+      }
     }
   }
 
@@ -486,7 +493,6 @@ function validateForm() {
 }
 
 function nextPrev(n) {
-  console.log('next button clicked');
   //get elements of class "tab" into array-like, assign it to x
   let allTabs = document.getElementsByClassName('tab');
 
@@ -551,66 +557,65 @@ function fixStepIndicator(n) {
 /*=============================================
 =            TYPEWRITER            =
 =============================================*/
-{
-  var TxtType = function (el, toRotate, period) {
-    this.toRotate = toRotate;
-    this.el = el;
-    this.loopNum = 0;
-    this.period = parseInt(period, 10) || 2000;
-    this.txt = '';
-    this.tick();
+
+var TxtType = function (el, toRotate, period) {
+  this.toRotate = toRotate;
+  this.el = el;
+  this.loopNum = 0;
+  this.period = parseInt(period, 10) || 2000;
+  this.txt = '';
+  this.tick();
+  this.isDeleting = false;
+};
+
+TxtType.prototype.tick = function () {
+  var i = this.loopNum % this.toRotate.length;
+  var fullTxt = this.toRotate[i];
+
+  if (this.isDeleting) {
+    // this.txt = fullTxt.substring(0, this.txt.length - 1);
+  } else {
+    this.txt = fullTxt.substring(0, this.txt.length + 1);
+  }
+
+  this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+
+  var that = this;
+  var delta = 125 - Math.random() * 100;
+
+  if (this.isDeleting) {
+    delta /= 2;
+  }
+
+  if (!this.isDeleting && this.txt === fullTxt) {
+    delta = this.period;
+    this.isDeleting = true;
+  } else if (this.isDeleting && this.txt === '') {
     this.isDeleting = false;
-  };
+    this.loopNum++;
+    delta = 500;
+  }
 
-  TxtType.prototype.tick = function () {
-    var i = this.loopNum % this.toRotate.length;
-    var fullTxt = this.toRotate[i];
+  setTimeout(function () {
+    that.tick();
+  }, delta);
+};
 
-    if (this.isDeleting) {
-      // this.txt = fullTxt.substring(0, this.txt.length - 1);
-    } else {
-      this.txt = fullTxt.substring(0, this.txt.length + 1);
+window.onload = function () {
+  var elements = document.getElementsByClassName('typewrite');
+  for (var i = 0; i < elements.length; i++) {
+    var toRotate = elements[i].getAttribute('data-type');
+    var period = elements[i].getAttribute('data-period');
+    if (toRotate) {
+      new TxtType(elements[i], JSON.parse(toRotate), period);
     }
-
-    this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
-
-    var that = this;
-    var delta = 125 - Math.random() * 100;
-
-    if (this.isDeleting) {
-      delta /= 2;
-    }
-
-    if (!this.isDeleting && this.txt === fullTxt) {
-      delta = this.period;
-      this.isDeleting = true;
-    } else if (this.isDeleting && this.txt === '') {
-      this.isDeleting = false;
-      this.loopNum++;
-      delta = 500;
-    }
-
-    setTimeout(function () {
-      that.tick();
-    }, delta);
-  };
-
-  window.onload = function () {
-    var elements = document.getElementsByClassName('typewrite');
-    for (var i = 0; i < elements.length; i++) {
-      var toRotate = elements[i].getAttribute('data-type');
-      var period = elements[i].getAttribute('data-period');
-      if (toRotate) {
-        new TxtType(elements[i], JSON.parse(toRotate), period);
-      }
-    }
-    // INJECT CSS
-    var css = document.createElement('style');
-    css.type = 'text/css';
-    css.innerHTML = '.typewrite > .wrap { border-right: 0.08em solid #fff}';
-    document.body.appendChild(css);
-  };
-}
+  }
+  // INJECT CSS
+  var css = document.createElement('style');
+  css.type = 'text/css';
+  css.innerHTML = '.typewrite > .wrap { border-right: 0.08em solid #fff}';
+  document.body.appendChild(css);
+};
 
 function autoFill() {
   let az = [
