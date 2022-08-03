@@ -332,217 +332,215 @@ function finalResult() {
 /*=============================================
 =            General Functionality            =
 =============================================*/
-{
-  function addField() {
-    let original = document.getElementById('inputRow');
-    let clone = original.cloneNode(true);
 
-    //Remove clear fields before adding
-    clone.getElementsByTagName('input')[0].value = '';
-    // clone.getElementsByTagName('input')[1].value = '';
+function addField() {
+  let original = document.getElementById('inputRow');
+  let clone = original.cloneNode(true);
 
-    clone.id = 'inputRow';
-    original.parentNode.appendChild(clone);
-  }
+  //Remove clear fields before adding
+  clone.getElementsByTagName('input')[0].value = '';
+  // clone.getElementsByTagName('input')[1].value = '';
 
-  function displayAboutMeForm() {
-    validateRatings();
-    let e = document.getElementById('aboutMeFormContainer');
+  clone.id = 'inputRow';
+  original.parentNode.appendChild(clone);
+}
 
-    e.style.display === 'none'
-      ? (e.style.display = 'block')
-      : (e.style.display = 'none');
-  }
+function displayAboutMeForm() {
+  validateRatings();
+  let e = document.getElementById('aboutMeFormContainer');
 
-  function deleteField() {
-    validateRatings();
-    let button = document.querySelectorAll('#xIcon');
-    let inp = document.querySelectorAll('#inputRow');
+  e.style.display === 'none'
+    ? (e.style.display = 'block')
+    : (e.style.display = 'none');
+}
 
-    if (inp.length === 1) {
-      inp[0].getElementsByTagName('input')[0].className += ' invalid';
-      document.getElementById('ratingValue').className += ' invalid';
-      setTimeout(function rm() {
-        //remove border after 3 seconds
-        inp[0].getElementsByTagName('input')[0].classList.remove('invalid');
-        document.getElementById('ratingValue').classList.remove('invalid');
-      }, 2000);
-    } else {
-      function remove() {
-        let input_ = document.querySelectorAll('#inputRow');
-        if (input_.length === 1) {
-          input_[0].getElementsByTagName('input')[0].className += ' invalid';
-          input_[0].getElementsByTagName('input')[1].className += ' invalid';
-          setTimeout(function rm() {
-            //remove border after 3 seconds
-            input_[0]
-              .getElementsByTagName('input')[0]
-              .classList.remove('invalid');
-            input_[0]
-              .getElementsByTagName('input')[1]
-              .classList.remove('invalid');
-          }, 2000);
-        } else {
-          this.parentNode.parentNode.parentNode.parentNode.remove();
-        }
-      }
+function deleteField() {
+  validateRatings();
+  let button = document.querySelectorAll('#xIcon');
+  let inp = document.querySelectorAll('#inputRow');
 
-      for (let i = 0; i < inp.length; i++) {
-        button[i].addEventListener('click', remove, false);
-      }
-    }
-  }
-
-  function validateDatesFieldForm() {
-    validateRatings();
-    let f = [...document.getElementsByClassName('field')];
-    let valid = true;
-
-    f.forEach((e) => {
-      if (e.value === '') {
-        //if field is empty
-        e.className += ' invalid'; //Apply red border
+  if (inp.length === 1) {
+    inp[0].getElementsByTagName('input')[0].className += ' invalid';
+    document.getElementById('ratingValue').className += ' invalid';
+    setTimeout(function rm() {
+      //remove border after 3 seconds
+      inp[0].getElementsByTagName('input')[0].classList.remove('invalid');
+      document.getElementById('ratingValue').classList.remove('invalid');
+    }, 2000);
+  } else {
+    function remove() {
+      let input_ = document.querySelectorAll('#inputRow');
+      if (input_.length === 1) {
+        input_[0].getElementsByTagName('input')[0].className += ' invalid';
+        input_[0].getElementsByTagName('input')[1].className += ' invalid';
         setTimeout(function rm() {
           //remove border after 3 seconds
-          e.classList.remove('invalid');
-        }, 3000);
-        valid = false; //don't allow new field to be added
+          input_[0]
+            .getElementsByTagName('input')[0]
+            .classList.remove('invalid');
+          input_[0]
+            .getElementsByTagName('input')[1]
+            .classList.remove('invalid');
+        }, 2000);
+      } else {
+        this.parentNode.parentNode.parentNode.parentNode.remove();
       }
-    });
-
-    if (valid) {
-      addField();
     }
 
-    return valid;
+    for (let i = 0; i < inp.length; i++) {
+      button[i].addEventListener('click', remove, false);
+    }
   }
+}
 
-  function validateRatings() {
-    let r = [...document.getElementById('ratingValue')];
+function validateDatesFieldForm() {
+  validateRatings();
+  let f = [...document.getElementsByClassName('field')];
+  let valid = true;
 
-    r.forEach((e) => {
-      if (e.value === '') {
-        e.className += ' invalid'; //Apply red border
-      } else {
+  f.forEach((e) => {
+    if (e.value === '') {
+      //if field is empty
+      e.className += ' invalid'; //Apply red border
+      setTimeout(function rm() {
+        //remove border after 3 seconds
         e.classList.remove('invalid');
-      }
-    });
-  }
-
-  /*FORM FUNCTIONALITY*/
-  let currentTab = 0; //global
-
-  document.addEventListener('DOMContentLoaded', function (event) {
-    showTab(currentTab);
+      }, 3000);
+      valid = false; //don't allow new field to be added
+    }
   });
 
-  // functions that run on the final tab
-  function finalDisplay() {
-    document.getElementById('calcBtn').style.display = 'none';
-    document.getElementById('all-steps').style.display = 'none';
-    document.getElementById('text-message-container').style.display = 'block';
+  if (valid) {
+    addField();
   }
 
-  function showTab(currentTab) {
-    //current Tab is a number
-    let allTabs = document.getElementsByClassName('tab');
+  return valid;
+}
 
-    //show tab according to variable currentTab's number
-    allTabs[currentTab].style.display = 'block';
+function validateRatings() {
+  let r = [...document.getElementById('ratingValue')];
 
-    /*HIDE OR SHOW BACK BUTTON*/
-    //if it's the first tab, hide the back button
-    if (currentTab == 0) {
-      document.getElementById('prevBtn').style.display = 'none';
+  r.forEach((e) => {
+    if (e.value === '') {
+      e.className += ' invalid'; //Apply red border
     } else {
-      //else show previous button
-      document.getElementById('prevBtn').style.display = 'inline';
+      e.classList.remove('invalid');
     }
+  });
+}
 
-    fixStepIndicator(currentTab);
+/*FORM FUNCTIONALITY*/
+let currentTab = 0; //global
+
+document.addEventListener('DOMContentLoaded', function (event) {
+  showTab(currentTab);
+});
+
+// functions that run on the final tab
+function finalDisplay() {
+  document.getElementById('calcBtn').style.display = 'none';
+  document.getElementById('all-steps').style.display = 'none';
+  document.getElementById('text-message-container').style.display = 'block';
+}
+
+function showTab(currentTab) {
+  //current Tab is a number
+  let allTabs = document.getElementsByClassName('tab');
+
+  //show tab according to variable currentTab's number
+  allTabs[currentTab].style.display = 'block';
+
+  /*HIDE OR SHOW BACK BUTTON*/
+  //if it's the first tab, hide the back button
+  if (currentTab == 0) {
+    document.getElementById('prevBtn').style.display = 'none';
+  } else {
+    //else show previous button
+    document.getElementById('prevBtn').style.display = 'inline';
   }
 
-  ///TO-DO validation
-  function validateForm() {
-    var x = document.getElementsByClassName('tab');
-    var y = x[currentTab].getElementsByTagName('input');
-    var i;
-    var valid = true;
+  fixStepIndicator(currentTab);
+}
 
-    for (i = 0; i < y.length; i++) {
-      //if any input field of currentTab is empty apply class 'invalid' and change valid to false
-      if (y[i].value == '') {
-        y[i].className += ' invalid';
-        valid = false;
-      }
+///TO-DO validation
+function validateForm() {
+  var x = document.getElementsByClassName('tab');
+  var y = x[currentTab].getElementsByTagName('input');
+  var i;
+  var valid = true;
+
+  for (i = 0; i < y.length; i++) {
+    //if any input field of currentTab is empty apply class 'invalid' and change valid to false
+    if (y[i].value == '') {
+      y[i].className += ' invalid';
+      valid = false;
     }
-
-    if (valid) {
-      // if valid is true apply class 'finish' to elements with classname 'step' in currentTab
-      document.getElementsByClassName('step')[currentTab].className +=
-        ' finish';
-    }
-
-    return valid;
   }
 
-  function nextPrev(n) {
-    console.log('next button clicked');
-    //get elements of class "tab" into array-like, assign it to x
-    let allTabs = document.getElementsByClassName('tab');
-
-    //You can't go to the next tab unless validate form return true
-    //validateForm return bollean
-    //if any input field of currentTab is empty apply class 'invalid'
-    if (n == 1 && !validateForm()) return false;
-
-    //hide current tab
-    allTabs[currentTab].style.display = 'none';
-
-    //nextPrev is called with a number argument 1 or -1 depending on the 'next' or 'prev' buttton clicked
-    currentTab = currentTab + n;
-
-    //One second last tab
-    /*IF second last tab, change next button to calculate button*/
-    if (currentTab == allTabs.length - 2) {
-      //If button is already changed to calc, make sure it's shown
-      //Need this code when they reach the final page which hides the calc button and they go back which needs the calc button to show again
-      if (document.getElementById('calcBtn')) {
-        document.getElementById('calcBtn').style.display = 'inline-block';
-      }
-      //If button is still right arrow, change it to calculate button
-      if (document.getElementById('nextBtn')) {
-        document.getElementById('nextBtn').innerHTML = 'Calculate!';
-        document.getElementById('nextBtn').id = 'calcBtn';
-      }
-    } else if (currentTab >= allTabs.length - 1) {
-      finalDisplay();
-      finalResult();
-    } else {
-      if (document.getElementById('calcBtn')) {
-        document.getElementById('calcBtn').innerHTML =
-          '<i class="fa fa-angle-double-right" aria-hidden="true"></i>';
-        document.getElementById('calcBtn').id = 'nextBtn';
-      }
-    }
-
-    showTab(currentTab);
+  if (valid) {
+    // if valid is true apply class 'finish' to elements with classname 'step' in currentTab
+    document.getElementsByClassName('step')[currentTab].className += ' finish';
   }
 
-  function fixStepIndicator(n) {
-    //n is currentTab
+  return valid;
+}
 
-    //steps are the icons at the top
-    let allSteps = document.getElementsByClassName('step');
+function nextPrev(n) {
+  console.log('next button clicked');
+  //get elements of class "tab" into array-like, assign it to x
+  let allTabs = document.getElementsByClassName('tab');
 
-    //remove active class for all steps
-    for (let i = 0; i < allSteps.length; i++) {
-      allSteps[i].className = allSteps[i].className.replace(' active', '');
+  //You can't go to the next tab unless validate form return true
+  //validateForm return bollean
+  //if any input field of currentTab is empty apply class 'invalid'
+  if (n == 1 && !validateForm()) return false;
+
+  //hide current tab
+  allTabs[currentTab].style.display = 'none';
+
+  //nextPrev is called with a number argument 1 or -1 depending on the 'next' or 'prev' buttton clicked
+  currentTab = currentTab + n;
+
+  //One second last tab
+  /*IF second last tab, change next button to calculate button*/
+  if (currentTab == allTabs.length - 2) {
+    //If button is already changed to calc, make sure it's shown
+    //Need this code when they reach the final page which hides the calc button and they go back which needs the calc button to show again
+    if (document.getElementById('calcBtn')) {
+      document.getElementById('calcBtn').style.display = 'inline-block';
     }
-
-    //apply active class to step
-    allSteps[n].className += ' active';
+    //If button is still right arrow, change it to calculate button
+    if (document.getElementById('nextBtn')) {
+      document.getElementById('nextBtn').innerHTML = 'Calculate!';
+      document.getElementById('nextBtn').id = 'calcBtn';
+    }
+  } else if (currentTab >= allTabs.length - 1) {
+    finalDisplay();
+    finalResult();
+  } else {
+    if (document.getElementById('calcBtn')) {
+      document.getElementById('calcBtn').innerHTML =
+        '<i class="fa fa-angle-double-right" aria-hidden="true"></i>';
+      document.getElementById('calcBtn').id = 'nextBtn';
+    }
   }
+
+  showTab(currentTab);
+}
+
+function fixStepIndicator(n) {
+  //n is currentTab
+
+  //steps are the icons at the top
+  let allSteps = document.getElementsByClassName('step');
+
+  //remove active class for all steps
+  for (let i = 0; i < allSteps.length; i++) {
+    allSteps[i].className = allSteps[i].className.replace(' active', '');
+  }
+
+  //apply active class to step
+  allSteps[n].className += ' active';
 }
 
 // const nextBtnClick = document.querySelector('#nextBtn');
