@@ -66,9 +66,10 @@ body {
 }
 
 .aboutMeFormContainer {
-  height: 500px;
+  height: 20em;
   display: block;
   margin: auto;
+  text-align: center;
 }
 
 #xIcon {
@@ -84,7 +85,7 @@ body {
 =            Results            =
 =============================================*/
 #knot {
-  width: 315px;
+  width: 14.3em;
   object-fit: contain;
   position: absolute;
   top: 0;
@@ -97,23 +98,25 @@ body {
   height: 20%;
 }
 
-#msgYueLaoContainer {
-  margin: auto;
-  text-align: center;
-}
-
 #text-message-container {
-  padding: 1em;
+  text-align: center;
+  margin: auto;
+
   font-family: 'Kalam', cursive;
+  padding: 1em;
   position: relative;
   font-size: 1.2rem;
-  margin: auto;
-  margin-bottom: 50px;
+  margin-bottom: 2.5rem;
   height: 500px;
-  width: 320px;
+  /* width: 15.5em; */
+  width: 14.5em;
   background-color: rgb(244, 226, 165);
   border-style: solid;
   border: 2px solid;
+  text-align: center;
+}
+
+#text-message {
 }
 
 /*=============================================

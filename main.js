@@ -301,7 +301,8 @@ function logic(datingPool) {
 
   if (numberOfDates() < thirtySevenPercent) {
     return `Your True Love is not found. 
-    Based on your dating history, they start to appear after ${
+    
+    According to your dating history, they start to appear after ${
       thirtySevenPercent - numberOfDates()
     } more relationships.`;
   }
@@ -316,9 +317,8 @@ function finalResult() {
   let result = logic(customDatingPool);
 
   //display result to html
-  document.getElementById(
-    'yourDatingPool'
-  ).innerText = `My intuition tells me that ${customDatingPool} people might be interested in you.`;
+  document.getElementById('yourDatingPool').innerText = `My intuition tells me: 
+  ${customDatingPool} people might be interested in you.`;
   document.getElementById('finalResult').innerText = result;
 }
 
